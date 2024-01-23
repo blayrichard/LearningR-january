@@ -3,4 +3,4 @@
 
 library(tidyverse)
 r3::check_git_config()
-usethis::use_git()
+#This will be used for testing out Git
