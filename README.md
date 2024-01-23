@@ -1,3 +1,5 @@
+Richard Blay - Metabolic Diseases
+
 TODO: Add more to the title of your project here
 
 # LearningR:
