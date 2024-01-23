@@ -1,4 +1,5 @@
-Package: LearningR
+Title: LearningR
+Package: LearningR-january
 Type: Project
 Version: 0.0.1
 Imports:
