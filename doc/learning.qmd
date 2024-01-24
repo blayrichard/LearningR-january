@@ -3,6 +3,23 @@ title: "Reproducible Documents"
 author: Richard Blay
 format: html
 ---
+Richard M. Blay
+HIMAG - University of Leipzig
+
+# Intro
+**Obesity-related** studies are crucial for developing new *treatment*
+
+# Methods and Results
+This study involved taking **samples** from animal experiments and *human* patients.
+
+## Analysis
+Results were analysed using R.
+
+# Discussion
+In this **study** we have examined possible *targets*.
+```{r}
+2 + 2
+```
 
 ```{r setup}
 #| message: FALSE
@@ -33,4 +50,29 @@ NHANES_small %>%
   ) %>%
   ungroup() %>%
   knitr::kable(caption = "Mean values of Age and BMI for each education and diabetes status")
+```
+## Prettier Table
+```{r}
+#| echo: FALSE
+#| message: false
+NHANES_small %>%
+  filter(!is.na(diabetes), !is.na(education)) %>%
+  group_by(diabetes, education) %>%
+  summarise(
+    mean_age = mean(age, na.rm = TRUE),
+    mean_bmi = mean(bmi, na.rm = TRUE)
+  ) %>%
+  ungroup() %>%
+  mutate(
+    mean_age = round(mean_age, digits = 1),
+    mean_bmi = round(mean_bmi, digits = 1),
+    education = str_to_sentence(education)
+  ) %>%
+  rename(
+    "Diabetes Status" = diabetes,
+    "Education" = education,
+    "Mean Age" = mean_age,
+    "Mean BMI" = mean_bmi
+  ) %>%
+  knitr::kable(caption = "Mean values of Age and BMI for each education and diabetes status.")
 ```
